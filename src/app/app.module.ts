@@ -9,7 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserComponent } from './user/user.component';
-import { DashComponent } from './dash/dash.component';
+
 import { MasterComponent } from './master/master.component';
 
 @NgModule({
@@ -20,7 +20,6 @@ import { MasterComponent } from './master/master.component';
     RegisterComponent,
     DashboardComponent,
     UserComponent,
-    DashComponent,
     MasterComponent
    
   ],

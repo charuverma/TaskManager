@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RegisterserviceService } from '../registerservice.service';
 
 @Component({
   selector: 'app-master',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MasterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private r:Router,private v:RegisterserviceService) {
+   /*  let a=this.v.getTkn();
+    if(!a)
+    {
+      this.r.navigate(['/login']);
+    } 
+    else{
+      this.r.navigate(['/dashboard']);
+    } */
+   }
 
   ngOnInit() {
   }

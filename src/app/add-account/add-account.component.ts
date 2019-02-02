@@ -14,7 +14,11 @@ export class AddAccountComponent implements OnInit {
   constructor( private v:RegisterserviceService,private r:Router) { }
   ul:loginmodel;
   c;
+  ab;
+  bb;
   d:Subscription;
+  b:Subscription;
+  n:Subscription;
   tempToken;
   btn(c:number){
     this. ul=new loginmodel(c);
@@ -24,7 +28,7 @@ export class AddAccountComponent implements OnInit {
     this.d = this.c.subscribe( (data) => {
       this.tempToken = data.headers.get('x-token');
       this.v.setTkn(this.tempToken);
-      this.r.navigate(['/home']);
+      this.r.navigate(['/dashboard']);
     },
     (err)=>
     {
@@ -34,6 +38,21 @@ export class AddAccountComponent implements OnInit {
       console.log("User Data Checks Out");
       
     });
+    /* this.ab = this.v.urating();
+    this.n = this.ab.subscribe((req)=>{
+      console.log(req);
+      this.v.setuser(req);
+     
+   
+    });
+    console.log("hello");
+    this.bb = this.v.sequen();
+    this.b = this.bb.subscribe((req)=>{
+      console.log(req);
+       this.v.setseq(req);
+     
+   
+    }); */
 
   }
 

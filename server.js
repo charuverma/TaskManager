@@ -56,6 +56,21 @@ app.use(bodyParser.json());
         });
      
     });
+    //logout api
+    app.post('/logout_admin', (req,res)=> {
+
+        admin.findOne({"token":req.body.token}).then((result)=>{
+             if (!result){return res.status(404).send();}
+                 result.token = null; 
+                 result.save().then(()=>{
+             });
+             res.status(200).send(result);    
+     
+         }).catch((err)=>{
+             res.status(400).send(err);
+         });
+         });
+ 
         /* app.post('/login', (req, res) => {
          res.header('confirmation', 'Checking for User');
         Smodel.findOne({'contact':req.body.contact}).then( (result) => {
@@ -78,6 +93,22 @@ app.use(bodyParser.json());
                     res.status(400).send(err);
                 });
             }); */
+            app.use(bodyParser.json());
+            //reminder
+ app.post('/reminder',(req,res) =>{
+   
+            var body=_.pick(req.body,['title','date','time']);
+            console.log(body);
+                var newUser = new Tmodel(body);
+                console.log(newUser);
+               // console.log('_id',newUser._id);
+                    newUser.save().then(()=>{
+                      console.log('saved');
+                      res.send();
+
+                    })
+                
+            });
 
 
 let port = process.env.PORT || 3000;

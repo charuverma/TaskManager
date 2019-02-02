@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RegisterserviceService } from '../registerservice.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private r:Router,private v:RegisterserviceService) { }
 
   ngOnInit() {
+    /* let a=this.v.getTkn();
+    if(!a)
+    {
+      this.r.navigate(['/login']);
+    } 
+    else{
+      this.r.navigate(['/dashboard']);
+    } */
   }
 
 }

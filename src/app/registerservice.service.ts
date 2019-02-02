@@ -11,6 +11,38 @@ import { Router } from '@angular/router';
 })
 export class RegisterserviceService {
   constructor(private http:HttpClient,private r:Router){}
+ 
+/*   aruser;
+urating(){
+  return this.http.get('http://localhost:3000/rating');
+}
+
+setuser(req){
+
+  this.aruser=req;
+  console.log(req);
+ this.r.navigate(['/dashboard']);
+
+}
+
+returnuser(){
+  console.log(this.aruser);
+  return this.aruser;
+}
+sequen(){
+  return this.http.get('http://localhost:3000/tab_sequence');
+}
+anews;
+setseq(h){
+this.anews=h;
+console.log(this.anews);
+}
+
+sendseq(){
+  return this.anews;
+} */
+
+
   user:registermodel;
   add1(user)
   {
@@ -30,10 +62,13 @@ export class RegisterserviceService {
     {
       return localStorage.getItem('x-token');
     }
+    delToken(){
+      return localStorage.removeItem('x-token');
+    }
   add(j:loginmodel): Observable<HttpResponse<loginmodel>>
   {
-  	return this.http.post<loginmodel>("http://localhost:3000/login", j, {observe: 'response'});
-  }
+    return this.http.post<loginmodel>("http://localhost:3000/login", j, {observe: 'response'});
+    }
   //user login token
 }
 
