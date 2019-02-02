@@ -1,0 +1,42 @@
+<div class="row">
+
+  <div class="col-sm-4" >
+  <h3 style="text-align:center"><b>REGISTER</b></h3>
+  <form > 
+      <div class="form-group">
+          <label >ContactNo</label>
+          <input type="number"class="form-control" #cno placeholder="Enter contact no">
+         
+      </div>
+      <div class="form-group">
+          <label >Name</label>
+          <input type="text"  class="form-control" #name placeholder="Enter Text">
+        
+      </div>
+     
+      <div class="form-group">
+          <label >Password</label>
+          <input type="password" class="form-control" #pass placeholder="Enter Text">
+      </div>
+      <div class="form-group" >
+                      <div class="rs-select2 js-select-simple select--no-search">
+                          <select name="gender" #gender style="margin-top:10px;width:100px;height:20px;">
+                              <option disabled="disabled" selected="selected">Gender</option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Other</option>
+                          </select>
+                          <div class="select-dropdown"></div>
+                      </div>
+                  </div>
+      
+     
+      <div class="form-group">
+        <button type="button"  (click)="bt(cno,name,pass,gender)" class="btn btn-primary" >Register</button>
+        
+    </div>
+  </form>
+  </div>
+  </div>
+  <!--[formGroup]="loginForm"-->  
+  

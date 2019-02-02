@@ -5,7 +5,7 @@ const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const _ = require('lodash'); 
 var userSchema =  mongoose.Schema({
-   contact:number,
+   contact:Number,
    name: {
         type: String,
         required: true,
@@ -15,10 +15,7 @@ var userSchema =  mongoose.Schema({
         type: String,
         required: true
     },
-    gender: {
-        type: String,
-        enum: ["male", "female"]
-    },
+    gender:String,
     tokens:String,
 });
 
