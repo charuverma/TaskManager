@@ -8,10 +8,11 @@ import { RegisterserviceService } from '../registerservice.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-
+aruser;
   constructor(private r:Router,private v:RegisterserviceService) { }
 
   ngOnInit() {
+    this.aruser = this.v.returnuser();
     /* let a=this.v.getTkn();
     if(!a)
     {

@@ -11,9 +11,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(private r:Router,private v:RegisterserviceService) {}
  
-/* 
+ 
     aruser = this.v.returnuser();
-length=this.aruser.length; */
+length=this.aruser.length ; 
    
  /*  let a=this.v.getTkn();
   if(!a)

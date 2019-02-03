@@ -1,5 +1,9 @@
  var{mongoose}=require('./My BackEnd/db/config'); 
  var{Smodel}=require('./My BackEnd/model/user');
+  var{Tmodel}=require('./My BackEnd/model/task');
+  var{Lmodel}=require('./My BackEnd/model/title');
+  var{dmodel}=require('./My BackEnd/model/daytask');
+  var{user}=require('./My BackEnd/model/admin');
 var express = require('express');
 var bodyParser = require('body-parser');
  const bcrypt=require('bcryptjs'); 
@@ -93,7 +97,7 @@ app.use(bodyParser.json());
                     res.status(400).send(err);
                 });
             }); */
-            app.use(bodyParser.json());
+           
             //reminder
  app.post('/reminder',(req,res) =>{
    
@@ -109,6 +113,50 @@ app.use(bodyParser.json());
                     })
                 
             });
+            //Add a Task
+            app.post('/day',(req,res) =>{
+   
+                var body=_.pick(req.body,['title']);
+                console.log(body);
+                    var newUser = new dmodel(body);
+                    console.log(newUser);
+                   // console.log('_id',newUser._id);
+                        newUser.save().then(()=>{
+                          console.log('saved');
+                          res.send();
+    
+                        })
+                    
+                });
+            //title New list
+            app.post('/newlist',(req,res) =>{
+   
+                var body=_.pick(req.body,['title']);
+                console.log(body);
+                    var newUser = new Lmodel(body);
+                    console.log(newUser);
+                   // console.log('_id',newUser._id);
+                        newUser.save().then(()=>{
+                          console.log('saved');
+                          res.send();
+    
+                        })
+                    
+                });
+            //rating
+            app.get('/rating', (req,res)=> {
+                console.log(req.query);
+                Smodel.find({}).then((result)=>{
+                    res.status(200).send(result
+                        );
+                    //console.log(req);
+                    
+                }).catch((err)=>{
+                    res.status(400).send(err);
+                });
+                console.log(req);
+                
+             });
 
 
 let port = process.env.PORT || 3000;

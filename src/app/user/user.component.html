@@ -64,51 +64,33 @@
       </div>
 </div>
   </div>
+</div>
   <div class="row">
       
           
                     
-    <table class="table table-bordered">
-      <thead>
+    <table class="table table-bordered" >
+      <thead style="width:70px;">
         <tr>
-          <th>Name</th>
+          <th >Name</th>
           <th>Mobile</th>
           <th>Action</th>
         </tr>
+        
       </thead>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-            
-                  <span class="glyphicon glyphicon-thumbs-up"></span>
-                
-            <span style="margin-left:5px;" class="glyphicon glyphicon-edit"></span>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-                
-              <span style="margin-left:5px;" class="glyphicon glyphicon-edit"></span>
-          </td>
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td>
-              <span class="glyphicon glyphicon-thumbs-up"></span>
-                
-              <span style="margin-left:5px;" class="glyphicon glyphicon-edit"></span>
-          </td>
-        </tr>
-      </tbody>
+      <tr *ngFor="let x of aruser; let i=index">
+        <td>{{x.name}}</td>
+        <td>{{x.contact}}</td>
+        <td><span class="glyphicon glyphicon-edit"></span>
+              <span  style="margin-left:5px;" class="glyphicon glyphicon-thumbs-up"></span>
+          
+        </td>
+      </tr>
+    
     </table>
       </div>
+     
       
   
-</div>
+
 

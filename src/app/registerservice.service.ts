@@ -12,12 +12,13 @@ import { Router } from '@angular/router';
 export class RegisterserviceService {
   constructor(private http:HttpClient,private r:Router){}
  
-/*   aruser;
+  aruser;
 urating(){
   return this.http.get('http://localhost:3000/rating');
+ console.log('urating');
 }
 
-setuser(req){
+ setuser(req){
 
   this.aruser=req;
   console.log(req);
@@ -28,8 +29,8 @@ setuser(req){
 returnuser(){
   console.log(this.aruser);
   return this.aruser;
-}
-sequen(){
+}  
+/* sequen(){
   return this.http.get('http://localhost:3000/tab_sequence');
 }
 anews;
@@ -40,8 +41,8 @@ console.log(this.anews);
 
 sendseq(){
   return this.anews;
-} */
-
+}  */ 
+ 
 
   user:registermodel;
   add1(user)
