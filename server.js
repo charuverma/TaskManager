@@ -3,7 +3,7 @@
   var{Tmodel}=require('./My BackEnd/model/task');
   var{Lmodel}=require('./My BackEnd/model/title');
   var{dmodel}=require('./My BackEnd/model/daytask');
-  var{user}=require('./My BackEnd/model/admin');
+ /*  var{user}=require('./My BackEnd/model/admin'); */
 var express = require('express');
 var bodyParser = require('body-parser');
  const bcrypt=require('bcryptjs'); 
@@ -128,6 +128,20 @@ app.use(bodyParser.json());
                         })
                     
                 });
+                ////////////////////////
+                app.post('/day',(req,res) =>{
+   
+                    var body=_.pick(req.body,['title,task']);
+                    console.log(body);
+                        var newUser = new dmodel(body);
+                        console.log(newUser);
+                       // console.log('_id',newUser._id);
+                            newUser.save().then(()=>{
+                              console.log('saved');
+                              res.send();
+        
+                            })
+                        });
             //title New list
             app.post('/newlist',(req,res) =>{
    
@@ -151,13 +165,34 @@ app.use(bodyParser.json());
                         );
                     //console.log(req);
                     
-                }).catch((err)=>{
+                }).catch((err)=>{ 
                     res.status(400).send(err);
                 });
                 console.log(req);
                 
              });
-
+             //api search1
+             app.get('/search1',(req,res)=>{
+    
+                dmodel.find().then((docs)=>{
+                     res.send(docs)
+                     console.log('done');
+                 }).catch((err)=>{
+                     res.status(400).send(err);
+                 }) 
+              
+              });
+             //
+             app.get('/search2',(req,res)=>{
+    
+                Tmodel.find().then((docs)=>{
+                     res.send(docs)
+                     console.log('done');
+                 }).catch((err)=>{
+                     res.status(400).send(err);
+                 }) 
+              
+              });
 
 let port = process.env.PORT || 3000;
   const server = app.listen(port, function(){
