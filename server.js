@@ -2,6 +2,7 @@
  var{Smodel}=require('./My BackEnd/model/user');
   var{Tmodel}=require('./My BackEnd/model/task');
   var{Lmodel}=require('./My BackEnd/model/title');
+  var{luci}=require('./My BackEnd/model/luci');
   var{dmodel}=require('./My BackEnd/model/daytask');
  /*  var{user}=require('./My BackEnd/model/admin'); */
 var express = require('express');
@@ -75,29 +76,7 @@ app.use(bodyParser.json());
          });
          });
  
-        /* app.post('/login', (req, res) => {
-         res.header('confirmation', 'Checking for User');
-        Smodel.findOne({'contact':req.body.contact}).then( (result) => {
-         if (!result) { return res.status(404).send(); }
-         bcrypt.compare(req.body.Pswd, result.password, (er, reslt) => {
-        if(reslt)
-                {
-                     var nwToken = jwt.sign( {_id: result._id}, 'meKey' ).toString();
-            
-                     result.token = nwToken;
-            
-                    result.save().then(() => {
-                   res.status(200).header('x-token', nwToken).send(result);
-                                });					
-                            }
-                        else
-                            { res.status(400).send(er); }
-                    });
-                }).catch( (err) => {
-                    res.status(400).send(err);
-                });
-            }); */
-           
+       
             //reminder
  app.post('/reminder',(req,res) =>{
    
@@ -113,8 +92,39 @@ app.use(bodyParser.json());
                     })
                 
             });
-            //Add a Task
-            app.post('/day',(req,res) =>{
+
+
+
+             //Api of Addtask
+    app.post('/addtask',(req,res)=>{
+        // console.log('hello');
+        var body = _.pick(req.body,['title','task']);
+        var newUser = new luci(body);
+         console.log(newUser);
+         newUser.save().then(()=>{
+                 console.log('saved');
+                 res.send();
+    
+        }) 
+            
+    
+    });
+    // //Api of create new list
+    app.post('/create',(req,res)=>{
+        var body = _.pick(req.body,['title','task']);
+         console.log(body); 
+         var newUser = new Lmodel(body);
+       
+         newUser.save().then(()=>{
+             console.log('saved');
+             res.send();
+    })
+     });   
+    
+    
+    
+    //Add a create newlist
+            /* app.post('/day',(req,res) =>{
    
                 var body=_.pick(req.body,['title']);
                 console.log(body);
@@ -127,13 +137,13 @@ app.use(bodyParser.json());
     
                         })
                     
-                });
-                ////////////////////////
-                app.post('/day',(req,res) =>{
-   
-                    var body=_.pick(req.body,['title,task']);
+                }); */
+                //api task
+              /*   app.post('/daytask',(req,res) =>{
+                    console.log('hello');
+                    var body=_.pick(req.body,['title','task']);
                     console.log(body);
-                        var newUser = new dmodel(body);
+                        var newUser = new luci(body);
                         console.log(newUser);
                        // console.log('_id',newUser._id);
                             newUser.save().then(()=>{
@@ -156,8 +166,8 @@ app.use(bodyParser.json());
     
                         })
                     
-                });
-            //rating
+                }); */
+            //rating admin panel
             app.get('/rating', (req,res)=> {
                 console.log(req.query);
                 Smodel.find({}).then((result)=>{
@@ -171,10 +181,10 @@ app.use(bodyParser.json());
                 console.log(req);
                 
              });
-             //api search1
+             //api search1 newlsit
              app.get('/search1',(req,res)=>{
     
-                dmodel.find().then((docs)=>{
+                luci.find().then((docs)=>{
                      res.send(docs)
                      console.log('done');
                  }).catch((err)=>{
@@ -182,7 +192,7 @@ app.use(bodyParser.json());
                  }) 
               
               });
-             //
+             //search2 reminder
              app.get('/search2',(req,res)=>{
     
                 Tmodel.find().then((docs)=>{

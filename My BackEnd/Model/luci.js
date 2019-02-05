@@ -7,5 +7,5 @@ var daySchema =  mongoose.Schema({
 
  });
  
-var dmodel = mongoose.model('dmodel', daySchema);
-module.exports={dmodel};
+var luci = mongoose.model('luci', daySchema);
+module.exports={luci};
